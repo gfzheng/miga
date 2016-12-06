@@ -1,0 +1,18 @@
+{
+  "name": "user",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "games": {
+    "type": "hasMany",
+    "model": "game",
+    "foreignKey": "ownerId"
+  }},
+  "acls": [],
+  "methods": {}
+}
