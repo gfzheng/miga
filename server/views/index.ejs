@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MyGame access control</title>
+</head>
+<body>
+<h1>Startkicker</h1>
+<table border=1 cellpadding=5>
+  <tr>
+    <th>Login</th>
+    <th>User name</th>
+    <th>User type</th>
+    <th>Role ($ = built-in role)</th>
+  </tr>
+  <tr>
+    <td><a href="/games">Guest</a></td>
+    <td></td>
+    <td>Guest</td>
+    <td>$unauthenticated, $everyone</td>
+  </tr>
+  <tr>
+    <td>
+      <form action="/games" method="post">
+        <input type="text" name="email" value="demo@miga.com" placeholder="Email"><br>
+        <input type="password" name="password" value="demopass" placeholder="Password"><br>
+        <input type="submit" value="Login">
+      </form>
+    </td>
+    <td>Demo</td>
+    <td>Owner (of game 1)</td>
+    <td>$owner, $authenticated, $everyone</td>
+  </tr>
+  <tr>
+    <td>
+      <form action="/games" method="post">
+        <input type="text" name="email" value="guifeng@miga.com" placeholder="Email"><br>
+        <input type="password" name="password" value="demopass" placeholder="Password"><br>
+        <input type="submit" value="Login">
+      </form>
+    </td>
+    <td>Guifeng</td>
+    <td>Administrator</td>
+    <td>admin, $authenticated, $everyone</td>
+  </tr>
+  <% if (loginFailed) { %>
+  <tr>
+    <td colspan=6>
+      <span style="color:red">Login failed, please try again. <%=email%>/<%=password%></span>
+    </td>
+  </tr>
+  <% } %>
+</table>
+</body>
+</html>

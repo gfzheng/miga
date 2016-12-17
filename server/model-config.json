@@ -33,11 +33,15 @@
     "dataSource": "db",
     "public": false
   },
-  "user": {
+  "player": {
     "dataSource": "db",
     "public": true
   },
   "game": {
+    "dataSource": "db",
+    "public": true
+  },
+  "renwu": {
     "dataSource": "db",
     "public": true
   }

@@ -1,27 +1,16 @@
 {
-  "name": "game",
-  "base": "PersistedModel",
+  "name": "player",
+  "base": "User",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "properties": {
-    "name": {
-      "type": "string",
-      "required": true
-    },
-    "level": {
-      "type": "number"
-    },
-    "score": {
-      "type": "number"
-    }
-  },
+  "properties": {},
   "validations": [],
   "relations": {
-    "user": {
-      "type": "belongsTo",
-      "model": "player",
+    "games": {
+      "type": "hasMany",
+      "model": "game",
       "foreignKey": "ownerId"
     }
   },
@@ -33,18 +22,10 @@
       "permission": "DENY"
     },
     {
-      "accessType": "READ",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "listGames"
-    },
-    {
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$owner",
-      "permission": "ALLOW",
-      "property": "*"
+      "permission": "ALLOW"
     },
     {
       "accessType": "EXECUTE",
